@@ -1,4 +1,3 @@
-from math import fabs
 import numpy as np
 
 
@@ -40,7 +39,7 @@ class Adaline(object):
         for i in range(self.__X_treino.shape[0]):
             n_epocas = 0
             
-            while(n_epocas < self.__max_epocas):
+            while n_epocas < self.__max_epocas:
                 EQM_anterior = self.__EQM()
                 u = self.__pesos[0]
 
@@ -54,7 +53,7 @@ class Adaline(object):
                 for j in range(self.__X_treino.shape[1]):
                     self.__pesos[j + 1] += self.__taxa_de_apredizagem * (self.__y_treino[i] - y) * self.__X_treino[i][j]
                     
-                if fabs(self.__EQM() - EQM_anterior) <= self.__precisao:
+                if abs(self.__EQM() - EQM_anterior) <= self.__precisao:
                     break
                 
                 n_epocas += 1                
